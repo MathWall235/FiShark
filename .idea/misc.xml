@@ -3,5 +3,8 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (TesteJogo)" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (FiShark-master)" project-jdk-type="Python SDK" />
+=======
+>>>>>>> 591eab2b24db55d480d4a9bf3021f67f0c30524d
 </project>
