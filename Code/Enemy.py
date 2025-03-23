@@ -1,9 +1,7 @@
-from Code.Const import WIN_WIDTH, ENTITY_SPEED
 from Code.Entity import Entity
+from Code.Const import WIN_WIDTH, WIN_HEIGHT, ENTITY_SPEED
 
-
-class Background(Entity):
-
+class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
 
@@ -11,4 +9,4 @@ class Background(Entity):
         self.rect.centerx -= ENTITY_SPEED[self.name]
         if self.rect.right <= 0:
             self.rect.left = WIN_WIDTH
-        pass
+
