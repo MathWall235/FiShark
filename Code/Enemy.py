@@ -7,6 +7,7 @@ class Enemy(Entity):
         super().__init__(name, position)
         # Initialize shot_delay based on ENTITY_SHOT_DELAY
         self.shot_delay = ENTITY_SHOT_DELAY.get(name, 0)  # Default to 0 if name is not found
+        self.last_dmg = None  # Inicializa o atributo last_dmg
 
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
