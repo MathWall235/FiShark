@@ -10,12 +10,19 @@ C_GREEN = (0, 128, 0)
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
+EVENT_TIMEOUT = pygame.USEREVENT + 2
 ENTITY_SPEED = {
     'Level1Back1': 0,
     'Level1Back2': 3,
     'Level1Back3': 2,
     'Level1Back4': 2,
     'Level1Back5': 3,
+    'Level2Back1': 0,
+    'Level2Back2': 3,
+    'Level2Back3': 2,
+    'Level2Back4': 2,
+    'Level2Back5': 3,
+    'Level2Back6': 3,
     'Player': 4,
     'Enemy1': 3,
     'Enemy2': 3,
@@ -30,6 +37,12 @@ ENTITY_HEALTH = {
     'Level1Back3': 999,
     'Level1Back4': 999,
     'Level1Back5': 999,
+    'Level2Back1': 999,
+    'Level2Back2': 999,
+    'Level2Back3': 999,
+    'Level2Back4': 999,
+    'Level2Back5': 999,
+    'Level2Back6': 999,
     'Player': 300,
     'PlayerShot': 1,
     'Enemy1': 50,
@@ -41,7 +54,7 @@ ENTITY_HEALTH = {
 ENTITY_SHOT_DELAY = {
     'Enemy1': 5,  # Intervalo maior para Enemy1
     'Enemy2': 3,  # Intervalo maior para Enemy2
-    #'Player': 5,  # Intervalo menor para Player
+    # 'Player': 5,  # Intervalo menor para Player
 }
 
 ENTITY_DAMAGE = {
@@ -50,6 +63,12 @@ ENTITY_DAMAGE = {
     'Level1Back3': 0,
     'Level1Back4': 0,
     'Level1Back5': 0,
+    'Level2Back1': 0,
+    'Level2Back2': 0,
+    'Level2Back3': 0,
+    'Level2Back4': 0,
+    'Level2Back5': 0,
+    'Level2Back6': 0,
     'Player': 1,
     'PlayerShot': 10,
     'Enemy1': 1,
@@ -65,6 +84,12 @@ ENTITY_SCORE = {
     'Level1Back3': 0,
     'Level1Back4': 0,
     'Level1Back5': 0,
+    'Level2Back1': 0,
+    'Level2Back2': 0,
+    'Level2Back3': 0,
+    'Level2Back4': 0,
+    'Level2Back5': 0,
+    'Level2Back6': 0,
     'Player': 0,
     'PlayerShot': 0,
     'Enemy1': 100,
@@ -72,9 +97,6 @@ ENTITY_SCORE = {
     'Enemy1Shot': 0,
     'Enemy2Shot': 0,
 }
-
-# S
-SPAWN_TIME = 4000
 
 # M
 MENU_OPTION = ('NEW GAME', 'SCORE', 'EXIT')
@@ -88,6 +110,13 @@ PLAYER_KEY_SHOOT = {
     "Player1": pygame.K_SPACE,
     "Player": pygame.K_SPACE,
 }
+
+# S
+SPAWN_TIME = 1500
+
+# T
+TIMEOUT_STEP = 100  # 100 mls
+TIMEOUT_LEVEL = 20000  # 20S
 
 # W
 WIN_WIDTH = 576
