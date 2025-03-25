@@ -1,5 +1,6 @@
 # C
 import pygame
+from pygame.examples.grid import WINDOW_WIDTH
 
 COLOR = (32, 178, 170)
 C_WHITE = (255, 255, 255)
@@ -52,8 +53,8 @@ ENTITY_HEALTH = {
 }
 
 ENTITY_SHOT_DELAY = {
-    'Enemy1': 5,  # Intervalo maior para Enemy1
-    'Enemy2': 3,  # Intervalo maior para Enemy2
+    'Enemy1': 11,
+    'Enemy2': 4,
     # 'Player': 5,  # Intervalo menor para Player
 }
 
@@ -70,7 +71,7 @@ ENTITY_DAMAGE = {
     'Level2Back5': 0,
     'Level2Back6': 0,
     'Player': 1,
-    'PlayerShot': 10,
+    'PlayerShot': 50,
     'Enemy1': 1,
     'Enemy2': 1,
     'Enemy1Shot': 20,
@@ -112,12 +113,30 @@ PLAYER_KEY_SHOOT = {
 }
 
 # S
-SPAWN_TIME = 1500
+SPAWN_TIME = 1000
+
+
 
 # T
 TIMEOUT_STEP = 100  # 100 mls
-TIMEOUT_LEVEL = 20000  # 20S
+TIMEOUT_LEVEL = 5000  # 20S
 
 # W
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
+
+SCORE_POS = {
+            'Title': (WIN_WIDTH / 2, 50),
+            'EnterName': (WIN_WIDTH / 2, 80),
+            'Label': (WIN_WIDTH / 2, 90),
+            'Name': (WIN_WIDTH / 2, 110),
+            0: (WIN_WIDTH / 2, 110),
+            1: (WIN_WIDTH / 2, 130),
+            2: (WIN_WIDTH / 2, 150),
+            3: (WIN_WIDTH / 2, 170),
+            4: (WIN_WIDTH / 2, 190),
+            5: (WIN_WIDTH / 2, 210),
+            6: (WIN_WIDTH / 2, 230),
+            7: (WIN_WIDTH / 2, 250),
+            8: (WIN_WIDTH / 2, 270),
+            9: (WIN_WIDTH / 2, 290),}

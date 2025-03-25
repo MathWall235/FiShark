@@ -1,5 +1,6 @@
 import random
 import pygame
+import sys
 from typing import List
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
