@@ -5,6 +5,7 @@ from Code.Const import WIN_WIDTH
 from Code.EnemyShot import EnemyShot
 from Code.Player import Player
 
+
 class EntityMediator:
 
     @staticmethod

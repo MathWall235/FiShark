@@ -7,6 +7,7 @@ from Code.PlayerShot import PlayerShot
 # Inicialize o Pygame
 pygame.init()
 
+
 class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
@@ -44,12 +45,14 @@ class Player(Entity):
 
     def move(self):
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[pygame.K_UP] and pressed_key[pygame.K_RIGHT] and self.rect.top > 0 and self.rect.right < WIN_WIDTH:
+        if pressed_key[pygame.K_UP] and pressed_key[
+            pygame.K_RIGHT] and self.rect.top > 0 and self.rect.right < WIN_WIDTH:
             self.rect.centery -= ENTITY_SPEED[self.name]
             self.rect.centerx += ENTITY_SPEED[self.name]
             self.current_image = (self.current_image + 1) % len(self.up_images)
             self.surf = self.up_images[self.current_image]
-        elif pressed_key[pygame.K_DOWN] and pressed_key[pygame.K_RIGHT] and self.rect.bottom < WIN_HEIGHT and self.rect.right < WIN_WIDTH:
+        elif pressed_key[pygame.K_DOWN] and pressed_key[
+            pygame.K_RIGHT] and self.rect.bottom < WIN_HEIGHT and self.rect.right < WIN_WIDTH:
             self.rect.centery += ENTITY_SPEED[self.name]
             self.rect.centerx += ENTITY_SPEED[self.name]
             self.current_image = (self.current_image + 1) % len(self.down_images)
@@ -59,7 +62,8 @@ class Player(Entity):
             self.rect.centerx -= ENTITY_SPEED[self.name]
             self.current_image = (self.current_image + 1) % len(self.up_images)
             self.surf = self.up_images[self.current_image]
-        elif pressed_key[pygame.K_DOWN] and pressed_key[pygame.K_LEFT] and self.rect.bottom < WIN_HEIGHT and self.rect.left > 0:
+        elif pressed_key[pygame.K_DOWN] and pressed_key[
+            pygame.K_LEFT] and self.rect.bottom < WIN_HEIGHT and self.rect.left > 0:
             self.rect.centery += ENTITY_SPEED[self.name]
             self.rect.centerx -= ENTITY_SPEED[self.name]
             self.current_image = (self.current_image + 1) % len(self.down_images)
@@ -89,10 +93,10 @@ class Player(Entity):
                 if self.shot_delay <= 0:
                     self.attacking = True
                     self.current_image = 0
-                   # self.shot_delay = ENTITY_SHOT_DELAY[self.name]  # Reset the delay
+                    # self.shot_delay = ENTITY_SHOT_DELAY[self.name]  # Reset the delay
                     return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
-          #      else:
-                  #  self.shot_delay -= 1
+        #      else:
+        #  self.shot_delay -= 1
 
     def update(self):
         if self.attacking:
@@ -101,6 +105,7 @@ class Player(Entity):
             if self.current_image == len(self.attack_images) - 1:
                 self.attacking = False
                 self.surf = self.initial_image
+
 
 # Configuração da repetição de teclas
 pygame.key.set_repeat(300, 300)

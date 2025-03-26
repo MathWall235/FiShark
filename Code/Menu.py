@@ -1,4 +1,5 @@
 import pygame
+import math
 from pygame import Surface, Rect
 from pygame.font import Font
 from Code.Const import WIN_WIDTH, COLOR, MENU_OPTION, C_WHITE, WIN_HEIGHT, C_BLACK, C_YELLOW
@@ -59,13 +60,25 @@ class Menu:
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Pacifico", size=text_size)
+        time = pygame.time.get_ticks() / 300  # Controla a velocidade da flutuação
+
+        # Cria superfície principal
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-        text_rect: Rect = text_surf.get_rect(center=text_center_pos)
-        outline_color = (0, 0, 0)  # Preto
+
+        # Efeito de flutuação vertical
+        float_offset = int(math.sin(time) * 5)  # Amplitude de 5 pixels
+        text_rect: Rect = text_surf.get_rect(center=(text_center_pos[0], text_center_pos[1] + float_offset))
+
+        # Contorno estático
+        outline_color = (0, 0, 0)
         outline_surf = text_font.render(text, True, outline_color).convert_alpha()
+
+        # Desenha contorno
         offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
         for offset in offsets:
             offset_rect = text_rect.copy()
-            offset_rect.move_ip(offset)  # Ajusta a posição
-            self.window.blit(source=outline_surf, dest=offset_rect)
-        self.window.blit(source=text_surf, dest=text_rect)
+            offset_rect.move_ip(offset)
+            self.window.blit(outline_surf, offset_rect)
+
+        # Desenha texto flutuante
+        self.window.blit(text_surf, text_rect)
