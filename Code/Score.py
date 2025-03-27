@@ -45,7 +45,7 @@ class Score:
         self.background = pygame.transform.scale(self.background, (WIN_WIDTH, WIN_HEIGHT))
 
     def save_score(self, menu_return: str, player_score: list[int]):
-        pygame.mixer.music.load('./asset/Score.wav')
+        pygame.mixer.music.load('./asset/ScoreFinal.mp3')
         pygame.mixer.music.play(-1)
         db_proxy = DBProxy('DBScore')
         name = ''
@@ -88,7 +88,7 @@ class Score:
             pygame.display.flip()
 
     def show_score(self):
-        pygame.mixer.music.load('./asset/Score.wav')
+        pygame.mixer.music.load('./asset/ScoreMenu.mp3')
         pygame.mixer.music.play(-1)
 
         db_proxy = DBProxy('DBScore')

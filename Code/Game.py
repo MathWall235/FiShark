@@ -6,7 +6,6 @@ from Code.Menu import Menu
 from Code.GameOver import GameOver
 from Code.GameState import GameState  # Nova importação
 
-
 class Game:
     game_over = False  # Mantenha esta declaração no escopo da classe
 
@@ -28,11 +27,14 @@ class Game:
                     level = Level(self.window, current_level, menu_return, player_score)
                     level_return = level.run(player_score)
 
-                    # Verifica se houve game over por morte do jogador ou falha no nível
-                    if not level_return or Game.game_over:
+                    # Unifica as condições de Game Over em uma única verificação
+                    if not level_return or Game.game_over or GameState.game_over:
                         game_over = GameOver(self.window)
                         choice_index = game_over.run()
-                        Game.game_over = False  # Reseta o flag
+
+                        # Reseta os flags de Game Over
+                        Game.game_over = False
+                        GameState.game_over = False
 
                         if choice_index == 0:  # Reiniciar
                             player_score = [0]
@@ -46,10 +48,7 @@ class Game:
                         else:
                             score.save_score(menu_return, player_score)
                             break
-                    if GameState.game_over or not level_return:
-                        game_over = GameOver(self.window)
-                        choice_index = game_over.run()
-                        GameState.game_over = False  # Resetar flag
+
             elif menu_return == MENU_OPTION[1]:  # "Score"
                 score.show_score()
 
