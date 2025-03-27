@@ -19,7 +19,7 @@ class Menu:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(
-                text_size=150,
+                text_size=70,
                 text="FiShark",
                 text_color=COLOR,
                 text_center_pos=(WIN_WIDTH / 2, 100)
@@ -27,13 +27,13 @@ class Menu:
             for i, option in enumerate(MENU_OPTION):
                 if i == menu_option:
                     self.menu_text(
-                        text_size=30,  # Tamanho do texto ajustado
+                        text_size=20,  # Tamanho do texto ajustado
                         text=option,
                         text_color=C_YELLOW,
                         text_center_pos=(WIN_WIDTH / 2, 180 + 50 * i))
                 else:
                     self.menu_text(
-                        text_size=30,  # Tamanho do texto ajustado
+                        text_size=20,  # Tamanho do texto ajustado
                         text=option,
                         text_color=C_WHITE,
                         text_center_pos=(WIN_WIDTH / 2, 180 + 50 * i)
@@ -59,7 +59,8 @@ class Menu:
                         return MENU_OPTION[menu_option]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name="Pacifico", size=text_size)
+        # Carrega a fonte personalizada
+        text_font: Font = pygame.font.Font('./asset/PressStart2P.ttf', text_size)  # Caminho modificado
         time = pygame.time.get_ticks() / 300  # Controla a velocidade da flutuação
 
         # Cria superfície principal

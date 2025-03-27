@@ -55,18 +55,19 @@ class Score:
             self.window.blit(self.background, (0, 0))
 
             # Título animado centralizado
-            title_y = 30 + math.sin(pygame.time.get_ticks() * 0.001) * 5
-            self._draw_text('PARABÉNS! VOCÊ VENCEU!', self.font_sizes['title'],
-                            self.colors['title'], (WIN_WIDTH // 2, title_y), outline=True)
+            self._draw_text('PARABÉNS!', self.font_sizes['title'],
+                            self.colors['title'], (WIN_WIDTH // 2, 70), outline=True)
+            self._draw_text('VOCÊ VENCEU!', self.font_sizes['title'],
+                            self.colors['title'], (WIN_WIDTH // 2, 110), outline=True)
 
             if menu_return == MENU_OPTION[0]:
                 # Elementos centralizados
                 self._draw_text('DIGITE SEU NOME (4 LETRAS):', self.font_sizes['text'],
-                                C_WHITE, (WIN_WIDTH // 2, 120), outline=True)
+                                C_WHITE, (WIN_WIDTH // 2, 150), outline=True)
 
                 # Campo de nome centralizado
                 self._draw_text(name, self.font_sizes['text'], self.colors['input'],
-                                (WIN_WIDTH // 2, 160), outline=True)
+                                (WIN_WIDTH // 2, 180), outline=True)
 
             # Eventos
             for event in pygame.event.get():
@@ -147,7 +148,7 @@ class Score:
 
     def _draw_header(self):
         y_pos = 70
-        self._draw_text('NAME', self.font_sizes['header'], C_WHITE,
+        self._draw_text('NOME', self.font_sizes['header'], C_WHITE,
                         (self.column_positions['name'], y_pos), outline=True)
         self._draw_text('SCORE', self.font_sizes['header'], C_WHITE,
                         (self.column_positions['score'], y_pos), outline=True)
@@ -215,5 +216,6 @@ class Score:
         text_rect = text_surf.get_rect(center=center_pos)
         self.window.blit(text_surf, text_rect)
 
-    def _get_date(self):
+    @staticmethod
+    def _get_date():
         return datetime.now().strftime('%Y-%m-%d %H:%M')

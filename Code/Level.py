@@ -5,7 +5,7 @@ from typing import List
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
 from Code.Const import WIN_WIDTH, COLOR, MENU_OPTION, C_WHITE, WIN_HEIGHT, C_BLACK, C_YELLOW, EVENT_ENEMY, SPAWN_TIME, \
-    C_GREEN, EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL
+    C_GREEN, EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, C_DARK_RED
 from Code.EntityMediator import EntityMediator
 from Code.Player import Player
 from Code.Enemy import Enemy
@@ -78,14 +78,13 @@ class Level:
                     ent.update()
 
             # Atualizações de informações na tela
-            self.level_text(18, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', C_WHITE, (10, 5))
-            self.level_text(18, f'fps: {clock.get_fps() :.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
-            self.level_text(18, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
+            self.level_text(18, f'{self.name} - Tempo: {self.timeout / 1000 :.1f}s', C_GREEN, (10, 5))
+            self.level_text(18, f'fps: {clock.get_fps() :.0f}', C_DARK_RED, (10, WIN_HEIGHT - 20))
 
             # Atualização da saúde do jogador
             for ent in self.entity_list:
                 if isinstance(ent, Player):
-                    self.level_text(18, f'Player - Health: {ent.health} | Score {ent.score}', C_GREEN, (10, 25))
+                    self.level_text(18, f'Vida: {ent.health} | Score {ent.score}', C_GREEN, (10, 25))
 
             pygame.display.flip()
 
