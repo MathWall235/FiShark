@@ -17,6 +17,5 @@ class Enemy(Entity):
         self.shot_delay -= 1
         if self.shot_delay <= 0:  # When the delay reaches 0 or below, the enemy can shoot
             self.shot_delay = ENTITY_SHOT_DELAY[self.name]  # Reset the delay
-            print(f"{self.name} disparou!")  # Apenas para verificar
             return EnemyShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
         return None
