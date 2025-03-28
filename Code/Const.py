@@ -19,10 +19,10 @@ EVENT_TIMEOUT = pygame.USEREVENT + 2
 # DADOS DE VELOCIDADE
 ENTITY_SPEED = {
     'Level1Back1': 0,
-    'Level1Back2': 4,
-    'Level1Back3': 3,
-    'Level1Back4': 3,
-    'Level1Back5': 4,
+    'Level1Back2': 3,
+    'Level1Back3': 2,
+    'Level1Back4': 2,
+    'Level1Back5': 3,
     'Level2Back1': 0,
     'Level2Back2': 3,
     'Level2Back3': 2,
