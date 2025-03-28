@@ -38,7 +38,7 @@ ENTITY_SPEED = {
 }
 
 # CONFIGURAÇÕES AJUSTÁVEIS
-PLAYER_HEALTH = 500
+PLAYER_HEALTH = 400
 ENEMY_ATTACK_SPEED = 25  # Delay entre ataques dos inimigos
 LEVEL_DURATION = 30000   # Duração do nível em milissegundos
 
@@ -83,8 +83,8 @@ ENTITY_DAMAGE = {
     'PlayerShot': 50,
     'Enemy1': 1,
     'Enemy2': 1,
-    'Enemy1Shot': 40,
-    'Enemy2Shot': 20,
+    'Enemy1Shot': 30,
+    'Enemy2Shot': 30,
 }
 
 ENTITY_SCORE = {
@@ -102,7 +102,7 @@ ENTITY_SCORE = {
     'Player': 0,
     'PlayerShot': 0,
     'Enemy1': 100,
-    'Enemy2': 50,
+    'Enemy2': 100,
     'Enemy1Shot': 0,
     'Enemy2Shot': 0,
 }
