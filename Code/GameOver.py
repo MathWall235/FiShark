@@ -14,7 +14,7 @@ class GameOver:
         self.rect = self.surf.get_rect(center=(WIN_WIDTH / 2, WIN_HEIGHT / 2))
 
     def run(self):
-        pygame.mixer.music.load('./asset/MenuSom.mp3')
+        pygame.mixer.music.load('./asset/GameOver.mp3')
         pygame.mixer.music.play(-1)
         clock = pygame.time.Clock()
 
@@ -42,18 +42,24 @@ class GameOver:
             clock.tick(60)
 
             # Controles
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_DOWN:
-                        self.selected_option = (self.selected_option + 1) % 2
-                    elif event.key == pygame.K_UP:
-                        self.selected_option = (self.selected_option - 1) % 2
-                    elif event.key == pygame.K_RETURN:
-                        pygame.mixer.music.stop()
-                        return self.selected_option
+            selected = self.handle_input()
+            if selected is not None:
+                pygame.mixer.music.stop()
+                return selected
+
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_DOWN:
+                    self.selected_option = (self.selected_option + 1) % 2
+                elif event.key == pygame.K_UP:
+                    self.selected_option = (self.selected_option - 1) % 2
+                elif event.key == pygame.K_RETURN:
+                    return self.selected_option
+        return None
 
     def draw_text_with_effect(self, text, size, color, center_pos, time):
         try:
@@ -71,7 +77,6 @@ class GameOver:
         shadow_surf = text_font.render(text, True, (30, 30, 30))
         self.window.blit(shadow_surf, text_rect.move(3, 3))
 
-        # Removemos o efeito de blur
         self.window.blit(text_surf, text_rect)
 
     def draw_text_with_outline(self, text, size, color, position, shadow_color):
