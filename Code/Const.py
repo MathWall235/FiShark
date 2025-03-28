@@ -46,7 +46,7 @@ ENTITY_HEALTH = {
     'Level2Back4': 999,
     'Level2Back5': 999,
     'Level2Back6': 999,
-    'Player': 300,
+    'Player': 500,
     'PlayerShot': 1,
     'Enemy1': 50,
     'Enemy2': 50,
@@ -55,9 +55,9 @@ ENTITY_HEALTH = {
 }
 
 ENTITY_SHOT_DELAY = {
-    'Enemy1': 11,
-    'Enemy2': 4,
-    #'Player': 5,  # Intervalo menor para Player
+    'Enemy1': 15,
+    'Enemy2': 15,
+    # 'Player': 5,  # Intervalo menor para Player
 }
 
 ENTITY_DAMAGE = {
@@ -115,11 +115,11 @@ PLAYER_KEY_SHOOT = {
 }
 
 # S
-SPAWN_TIME = 500
+SPAWN_TIME = 350
 
 # T
 TIMEOUT_STEP = 100  # 100 mls
-TIMEOUT_LEVEL = 10000  # 20S
+TIMEOUT_LEVEL = 30000  # 30s
 
 # W
 WIN_WIDTH = 576
