@@ -1,3 +1,4 @@
+# entitymediator.py
 from Code.Entity import Entity
 from Code.Enemy import Enemy
 from Code.PlayerShot import PlayerShot
@@ -5,7 +6,6 @@ from Code.Const import WIN_WIDTH
 from Code.EnemyShot import EnemyShot
 from Code.Player import Player
 from Code.GameState import GameState
-
 
 class EntityMediator:
     @staticmethod
@@ -43,7 +43,7 @@ class EntityMediator:
                 ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
 
-                # Nova parte para triggerar a animação de dano
+                # Trigger para animação de dano
                 if isinstance(ent1, Player):
                     ent1.on_hit()
                 if isinstance(ent2, Player):

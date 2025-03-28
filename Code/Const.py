@@ -1,7 +1,8 @@
-# C
+# const.py
 import pygame
 from pygame.examples.grid import WINDOW_WIDTH
 
+# CORES
 COLOR = (32, 178, 170)
 C_WHITE = (255, 255, 255)
 C_BLACK = (0, 0, 0)
@@ -11,9 +12,11 @@ C_GREEN = (0, 128, 0)
 C_RED = (255, 0, 0)
 C_DARK_RED = (200, 0, 0)
 
-# E
+# EVENTOS
 EVENT_ENEMY = pygame.USEREVENT + 1
 EVENT_TIMEOUT = pygame.USEREVENT + 2
+
+# DADOS DE VELOCIDADE
 ENTITY_SPEED = {
     'Level1Back1': 0,
     'Level1Back2': 3,
@@ -32,8 +35,13 @@ ENTITY_SPEED = {
     'PlayerShot': 3,
     'Enemy1Shot': 7,
     'Enemy2Shot': 5,
-
 }
+
+# CONFIGURAÇÕES AJUSTÁVEIS
+PLAYER_HEALTH = 500
+ENEMY_ATTACK_SPEED = 25  # Delay entre ataques dos inimigos
+LEVEL_DURATION = 30000   # Duração do nível em milissegundos
+
 ENTITY_HEALTH = {
     'Level1Back1': 999,
     'Level1Back2': 999,
@@ -55,9 +63,8 @@ ENTITY_HEALTH = {
 }
 
 ENTITY_SHOT_DELAY = {
-    'Enemy1': 15,
-    'Enemy2': 15,
-    # 'Player': 5,  # Intervalo menor para Player
+    'Enemy1': 25,
+    'Enemy2': 25,
 }
 
 ENTITY_DAMAGE = {
@@ -78,7 +85,6 @@ ENTITY_DAMAGE = {
     'Enemy2': 1,
     'Enemy1Shot': 40,
     'Enemy2Shot': 20,
-
 }
 
 ENTITY_SCORE = {
@@ -101,10 +107,10 @@ ENTITY_SCORE = {
     'Enemy2Shot': 0,
 }
 
-# M
-MENU_OPTION = ('NOVO JOGO', 'SCORE', 'SAIR')
+# MENU
+MENU_OPTION = ('NOVO JOGO', 'SCORE', 'CONFIGURAÇÕES', 'SAIR')
 
-# P
+# CONTROLES
 PLAYER_KEY_UP = {'Player1': pygame.K_UP}
 PLAYER_KEY_DOWN = {'Player1': pygame.K_DOWN}
 PLAYER_KEY_LEFT = {'Player1': pygame.K_LEFT}
@@ -114,20 +120,15 @@ PLAYER_KEY_SHOOT = {
     "Player": pygame.K_SPACE,
 }
 
-# S
+# OUTROS
 SPAWN_TIME = 350
-
-# T
 TIMEOUT_STEP = 100  # 100 mls
 TIMEOUT_LEVEL = 30000  # 30s
-
-# W
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
 
-# S
 SCORE_POS = {
-    'Title': (288, 30),  # Centro horizontal (576/2)
+    'Title': (288, 30),
     'EnterName': (WIN_WIDTH / 2, 80),
     'Label': (WIN_WIDTH / 2, 90),
     'Name': (WIN_WIDTH / 2, 110),
@@ -140,4 +141,5 @@ SCORE_POS = {
     6: (WIN_WIDTH / 2, 230),
     7: (WIN_WIDTH / 2, 250),
     8: (WIN_WIDTH / 2, 270),
-    9: (WIN_WIDTH / 2, 290), }
+    9: (WIN_WIDTH / 2, 290),
+}

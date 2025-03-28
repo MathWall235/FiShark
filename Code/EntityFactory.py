@@ -1,9 +1,9 @@
+# entityfactory.py
 import random
 from Code.Background import Background
 from Code.Const import WIN_WIDTH, WIN_HEIGHT, ENTITY_SPEED
 from Code.Player import Player
 from Code.Enemy import Enemy
-
 
 class EntityFactory:
 
@@ -12,13 +12,13 @@ class EntityFactory:
         match entity_name:
             case 'Level1Back':
                 list_back = []
-                for i in range(1, 6):  # level 1 images
+                for i in range(1, 6):  # Imagens do Level 1
                     list_back.append(Background(f'Level1Back{i}', (0, 0)))
                     list_back.append(Background(f'Level1Back{i}', (WIN_WIDTH, 0)))
                 return list_back
             case 'Level2Back':
                 list_back = []
-                for i in range(1, 6):  # level 2 images
+                for i in range(1, 6):  # Imagens do Level 2
                     list_back.append(Background(f'Level2Back{i}', (0, 0)))
                     list_back.append(Background(f'Level2Back{i}', (WIN_WIDTH, 0)))
                 return list_back

@@ -1,9 +1,9 @@
+# menu.py
 import pygame
 import math
 from pygame import Surface, Rect
 from pygame.font import Font
 from Code.Const import WIN_WIDTH, COLOR, MENU_OPTION, C_WHITE, WIN_HEIGHT, C_BLACK, C_YELLOW
-
 
 class Menu:
     def __init__(self, window):
@@ -16,7 +16,7 @@ class Menu:
         pygame.mixer.music.load('./asset/MenuSom.mp3')
         pygame.mixer.music.play(-1)
         while True:
-            # DRAW IMAGES
+            # Desenha o background
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(
                 text_size=70,
@@ -24,62 +24,58 @@ class Menu:
                 text_color=COLOR,
                 text_center_pos=(WIN_WIDTH / 2, 100)
             )
+            # Ajuste: posição inicial e espaçamento reduzidos para caber todas as opções
+            start_y = 160
+            spacing = 40
+            # Desenha as opções do menu
             for i, option in enumerate(MENU_OPTION):
+                y = start_y + spacing * i
                 if i == menu_option:
                     self.menu_text(
-                        text_size=20,  # Tamanho do texto ajustado
+                        text_size=20,
                         text=option,
                         text_color=C_YELLOW,
-                        text_center_pos=(WIN_WIDTH / 2, 180 + 50 * i))
+                        text_center_pos=(WIN_WIDTH / 2, y)
+                    )
                 else:
                     self.menu_text(
-                        text_size=20,  # Tamanho do texto ajustado
+                        text_size=20,
                         text=option,
                         text_color=C_WHITE,
-                        text_center_pos=(WIN_WIDTH / 2, 180 + 50 * i)
+                        text_center_pos=(WIN_WIDTH / 2, y)
                     )
+            # Incluir o texto "Feito por: ..." na borda inferior da tela
+            self.menu_text(
+                text_size=9,
+                text="Feito por: Matheus Wallace Pedroso de Almeida / RU: 4525258",
+                text_color=C_WHITE,
+                text_center_pos=(WIN_WIDTH / 2, WIN_HEIGHT - 10)
+            )
             pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-                if event.type == pygame.KEYDOWN:  # Down
+                if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
-                        if menu_option < len(MENU_OPTION) - 1:
-                            menu_option += 1
-                        else:
-                            menu_option = 0
-                    if event.key == pygame.K_UP:  # Up
-                        if menu_option > 0:
-                            menu_option -= 1
-                        else:
-                            menu_option = len(MENU_OPTION) - 1
-                    if event.key == pygame.K_RETURN:  # ENTER
+                        menu_option = (menu_option + 1) % len(MENU_OPTION)
+                    if event.key == pygame.K_UP:
+                        menu_option = (menu_option - 1) % len(MENU_OPTION)
+                    if event.key == pygame.K_RETURN:
                         return MENU_OPTION[menu_option]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        # Carrega a fonte personalizada
-        text_font: Font = pygame.font.Font('./asset/PressStart2P.ttf', text_size)  # Caminho modificado
-        time = pygame.time.get_ticks() / 300  # Controla a velocidade da flutuação
-
-        # Cria superfície principal
+        text_font: Font = pygame.font.Font('./asset/PressStart2P.ttf', text_size)
+        time_val = pygame.time.get_ticks() / 300
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-
-        # Efeito de flutuação vertical
-        float_offset = int(math.sin(time) * 5)  # Amplitude de 5 pixels
+        float_offset = int(math.sin(time_val) * 5)
         text_rect: Rect = text_surf.get_rect(center=(text_center_pos[0], text_center_pos[1] + float_offset))
-
-        # Contorno estático
         outline_color = (0, 0, 0)
         outline_surf = text_font.render(text, True, outline_color).convert_alpha()
-
-        # Desenha contorno
         offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
         for offset in offsets:
             offset_rect = text_rect.copy()
             offset_rect.move_ip(offset)
             self.window.blit(outline_surf, offset_rect)
-
-        # Desenha texto flutuante
         self.window.blit(text_surf, text_rect)
