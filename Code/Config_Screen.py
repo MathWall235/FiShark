@@ -2,7 +2,7 @@ import sys, math, random, pygame
 from pygame import KEYDOWN, K_RETURN, K_ESCAPE, K_UP, K_DOWN, K_LEFT, K_RIGHT
 from pygame.font import Font
 from Code.Const import WIN_WIDTH, WIN_HEIGHT, C_WHITE, C_YELLOW, C_BLACK, PLAYER_HEALTH, ENEMY_ATTACK_SPEED, \
-    LEVEL_DURATION
+    LEVEL_DURATION, SPAWN_TIME, INITIAL_SPAWN_TIME
 from Code.DBProxy import DBProxy
 
 
@@ -33,6 +33,13 @@ class ConfigScreen:
                 "value": LEVEL_DURATION // 1000,
                 "min": 10,
                 "max": 60,
+                "step": 1,
+            },
+            {
+                "name": "Inimigos por Segundo",
+                "value": 1000 // SPAWN_TIME,  # Conversão para taxa
+                "min": 1,
+                "max": 10,
                 "step": 1,
             },
             {  # Novo campo de ação
@@ -106,12 +113,19 @@ class ConfigScreen:
                         else:
                             # Retorna configurações ajustadas
                             return (
-                                self.fields[0]["value"],
-                                (self.fields[1]['min'] + self.fields[1]['max'] - self.fields[1]["value"]),
-                                self.fields[2]["value"] * 1000
+                                self.fields[0]["value"],  # Vida
+                                (self.fields[1]['min'] + self.fields[1]['max'] - self.fields[1]["value"]),  # Ataque
+                                self.fields[2]["value"] * 1000,  # Duração
+                                1000 // self.fields[3]["value"]  # Spawn time
                             )
                     elif event.key == K_ESCAPE:
-                        return (PLAYER_HEALTH, ENEMY_ATTACK_SPEED, LEVEL_DURATION)
+                        # Retorna os valores originais incluindo o SPAWN_TIME
+                        return (
+                            PLAYER_HEALTH,
+                            ENEMY_ATTACK_SPEED,
+                            LEVEL_DURATION,
+                            INITIAL_SPAWN_TIME  # Valor original do spawn
+                        )
 
     def _draw_text(self, text, size, color, center_pos, outline=False):
         font = Font(self.font_path, size)

@@ -57,17 +57,18 @@ class Game:
 
             elif menu_return == "CONFIGURAÇÕES":
                 config = ConfigScreen(self.window)
-                new_player_health, new_enemy_attack_speed, new_level_duration = config.run()
-                # Atualiza as configurações globais
-                Const.PLAYER_HEALTH = new_player_health
-                Const.ENEMY_ATTACK_SPEED = new_enemy_attack_speed
-                Const.LEVEL_DURATION = new_level_duration
-                # Propaga as mudanças para os dicionários utilizados na criação de entidades
-                Const.ENTITY_HEALTH['Player'] = new_player_health
+                new_health, new_attack_speed, new_duration, new_spawn_time = config.run()
+                # Atualiza todas as configurações
+                Const.PLAYER_HEALTH = new_health
+                Const.ENEMY_ATTACK_SPEED = new_attack_speed
+                Const.LEVEL_DURATION = new_duration
+                Const.SPAWN_TIME = new_spawn_time  # Novo
+                # Atualiza entidades
+                Const.ENTITY_HEALTH['Player'] = new_health
                 if 'Enemy1' in Const.ENTITY_SHOT_DELAY:
-                    Const.ENTITY_SHOT_DELAY['Enemy1'] = new_enemy_attack_speed
+                    Const.ENTITY_SHOT_DELAY['Enemy1'] = new_attack_speed
                 if 'Enemy2' in Const.ENTITY_SHOT_DELAY:
-                    Const.ENTITY_SHOT_DELAY['Enemy2'] = new_enemy_attack_speed
+                    Const.ENTITY_SHOT_DELAY['Enemy2'] = new_attack_speed
 
             elif menu_return == MENU_OPTION[3] or menu_return == "SAIR":
                 pygame.quit()

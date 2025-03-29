@@ -121,7 +121,6 @@ PLAYER_KEY_SHOOT = {
 }
 
 # OUTROS
-SPAWN_TIME = 350
 TIMEOUT_STEP = 100  # 100 mls
 TIMEOUT_LEVEL = 30000  # 30s
 WIN_WIDTH = 576
@@ -143,3 +142,5 @@ SCORE_POS = {
     8: (WIN_WIDTH / 2, 270),
     9: (WIN_WIDTH / 2, 290),
 }
+INITIAL_SPAWN_TIME = 350  # Mantém o valor padrão original
+SPAWN_TIME = INITIAL_SPAWN_TIME  # Variável ajustável
